@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bank Statement Upload</title>
+  </head>
+  <body>
+    <h1>Upload Bank Statement</h1>
+    <input type="file" id="fileInput" />
+    <select id="strategySelect">
+      <option value="Aggressive Investing" selected>
+        Aggressive Investing
+      </option>
+      <option value="Conservative Investing">Conservative Investing</option>
+      <option value="Moderate Investing">Moderate Investing</option>
+    </select>
+    <button onclick="uploadFile()">Upload & Analyze</button>
+    <pre id="result"></pre>
+
+    <script>
+      async function uploadFile() {
+        console.log("Upload initiated");
+        const file = document.getElementById("fileInput").files[0];
+        const strategy = document.getElementById("strategySelect").value;
+        if (!file) {
+          alert("Please select a file!");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const url = `http://127.0.0.1:8000/upload-bank-statement?investment_strategy=${encodeURIComponent(
+          strategy
+        )}`;
+
+        try {
+          console.log("Sending POST request to", url);
+          const response = await fetch(url, {
+            method: "POST",
+            body: formData,
+          });
+          const data = await response.json();
+          console.log("Response received", data);
+          document.getElementById("result").textContent = JSON.stringify(
+            data,
+            null,
+            2
+          );
+        } catch (err) {
+          console.error("Fetch error:", err);
+          document.getElementById("result").textContent = "Error: " + err;
+        }
+      }
+    </script>
+  </body>
+</html>
