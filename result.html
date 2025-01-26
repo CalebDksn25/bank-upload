@@ -3,65 +3,113 @@
   <head>
     <meta charset="utf-8" />
     <title>Analysis Results - Financial Health Advisor</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style1.css" />
+    <!-- Removed the link to style1.css to avoid conflicting styles -->
+    <!-- <link rel="stylesheet" href="style1.css" /> -->
   </head>
   <body class="background-section">
     <!-- Navbar -->
     <nav class="navbar">
       <div class="logo">
-        <img src="images/logo.PNG" alt="Financial Health Advisor Logo" />
+        <img src="assets/lpllogo.jpg" alt="Financial Health Advisor Logo" />
       </div>
       <span class="navbar-title">Financial Health Advisor</span>
     </nav>
 
     <!-- Main Content -->
     <main class="container">
-      <h1>Analysis Results</h1>
-
       <!-- Loading Spinner -->
       <div id="loading-spinner" class="spinner" style="display: none"></div>
 
       <!-- Results Section -->
       <div id="results-section">
-        <!-- The analysis results will be displayed here -->
+        <!-- Gauge and Score at the top center -->
+        <div class="gauge-container">
+          <div class="gauge-display">
+            <h2>Wealth Score Gauge</h2>
+            <div class="box gauge--1" id="wealthGauge">
+              <div class="mask">
+                <div class="semi-circle"></div>
+                <div class="semi-circle--mask" id="semiCircleMask"></div>
+                <!-- New needle element -->
+                <div class="needle" id="wealthNeedle"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wealth Score Display -->
+          <div class="wealth-score-container">
+            <div id="Wealth-Score" class="wealth-score">
+              <!-- Wealth Score will be displayed here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Layout for the boxes -->
+        <div class="info-grid">
+          <div class="card">
+            <div class="top-expenses-container">
+              <h2>Top Expenses</h2>
+              <ul id="top-expenses" class="expenses-list">
+                <!-- Expenses will be populated here -->
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="investment-advice-container">
+              <div id="data-display" class="data-display">
+                <!-- Investment Advice will be displayed here -->
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="money-change-container">
+              <div id="Money-Change" class="data-display">
+                <!-- Money Change information will be displayed here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Switched positions of Suggested Monthly Savings and Investment Strategy -->
+          <div class="card">
+            <div class="investment-type-container">
+              <div id="Investment-Type" class="data-display">
+                <!-- Investment Strategy will be displayed here -->
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="monthly-savings-container">
+              <div id="Monthly-Savings" class="data-display">
+                <!-- Monthly Savings information will be displayed here -->
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="contact-us-container">
+              <div id="Contact-Us" class="data-display">
+                <strong>Contact Us:</strong>
+                <a href="https://www.lpl.com/">Get Investing Today!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Back Button moved below all elements -->
+        <button
+          class="next-page-button back-button"
+          onclick="window.location.href='index.html'">
+          Back
+        </button>
       </div>
     </main>
 
-    <!-- Link to external script -->
-    <script>
-      // filepath: /Users/calebdickson/Desktop/newnew/bank-upload/result.html
-
-      document.addEventListener("DOMContentLoaded", () => {
-        const resultsSection = document.getElementById("results-section");
-        const loadingSpinner = document.getElementById("loading-spinner");
-
-        // Show the loading spinner
-        loadingSpinner.style.display = "block";
-
-        // Retrieve the LLM data from localStorage
-        const llmData = localStorage.getItem("llmData");
-
-        if (llmData) {
-          const data = JSON.parse(llmData);
-
-          // Display the results
-          resultsSection.innerHTML = `
-            <h2>User ID: ${data.user_id}</h2>
-            <p><strong>Monthly Savings:</strong> $${data.monthly_savings}</p>
-            <p><strong>Wealth Health Score:</strong> ${data.wealth_health}/100</p>
-            <p><strong>Investment Advice:</strong> ${data.investment_advice}</p>
-          `;
-
-          // Optionally, clear the stored data
-          // localStorage.removeItem("llmData");
-        } else {
-          resultsSection.innerHTML =
-            "<p>No analysis data available. Please upload a bank statement first.</p>";
-        }
-
-        // Hide the loading spinner
-        loadingSpinner.style.display = "none";
-      });
-    </script>
+    <!-- Link to external scripts -->
+    <script src="script.js"></script>
+    <script src="script1.js"></script>
   </body>
 </html>

@@ -18,42 +18,68 @@
     <main class="container">
       <h1>Financial Health Advisor</h1>
       <div class="dropdown-container">
-        <label for="optionsDropdown">Select Your Investment Strategy:</label>
+        <label for="optionsDropdown" class="investment-text"
+          >Select Your Investment Strategy:</label
+        >
         <select id="optionsDropdown">
           <option value="" disabled selected>Click to Open</option>
           <option value="aggressive_investing">Aggressive Investing</option>
           <option value="conservative_investing">Conservative Investing</option>
-          <option value="retirement_planning">Retirement Planning</option>
-          <option value="tax_strategy">Tax Strategy</option>
-          <option value="estate_planning">Estate Planning</option>
+          <option value="aggressive_saving">Aggressive Saving</option>
+          <option value="conservative_saving">Conservative Saving</option>
+          <option value="balanced">Balanced</option>
         </select>
       </div>
-      <div class="button-container">
-        <!-- Upload Button -->
-        <button id="upload-button" class="upload-button">
-          Upload Bank Statement
-        </button>
 
-        <!-- Hidden File Input -->
-        <input type="file" id="file-input" style="display: none" />
+      <div class="upload-section-container">
+        <div class="button-container">
+          <!-- Upload Button -->
+          <button id="upload-button-1" class="upload-button">
+            Upload Bank Statement
+          </button>
 
-        <form id="form" class="form" action="results.html" method="post">
-          <!-- Uploaded File Section -->
-          <div id="uploaded-file" class="uploaded-file"></div>
-        </form>
+          <!-- Hidden File Input -->
+          <input type="file" id="file-input" style="display: none" />
 
-        <!-- Next Page Button -->
-        <button
-          type="button"
-          id="next-page-button"
-          class="next-page-button"
-          disabled>
-          Get Analysis
-        </button>
+          <form id="form" class="form" action="results.html" method="post">
+            <!-- Uploaded File Section -->
+            <div id="uploaded-file" class="uploaded-file"></div>
+          </form>
+
+          <!-- Next Page Button -->
+          <button
+            type="button"
+            id="next-page-button"
+            class="next-page-button"
+            disabled>
+            Get Analysis
+          </button>
+        </div>
       </div>
 
-      <!-- Loading Spinner -->
-      <div id="loading-spinner" class="spinner" style="display: none"></div>
+      <div class="spinner-container">
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="spinner" style="display: none"></div>
+      </div>
+
+      <!-- Gauge Implementation Commented Out -->
+      <!--
+      <div class="wrapper">
+        <div class="gauge">
+          <div class="slice-colors">
+            <div class="st slice-item"></div>
+            <div class="st slice-item"></div>
+            <div class="st slice-item"></div>
+          </div>
+          <div id="arrow" class="needle"></div>
+          <div class="gauge-center"><div id="counter">0</div></div>
+        </div>
+      </div>
+
+      <div class="s-box">
+        <input id="testParam" type="range" min="0" max="100" value="0" />
+      </div>
+      -->
     </main>
     <!-- Link to external script -->
     <script src="script.js"></script>

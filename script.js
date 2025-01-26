@@ -1,5 +1,5 @@
 // Trigger the hidden file input when the upload button is clicked
-document.getElementById("upload-button").addEventListener("click", () => {
+document.getElementById("upload-button-1").addEventListener("click", () => {
   document.getElementById("file-input").click();
 });
 
@@ -10,7 +10,8 @@ document
     const file = event.target.files[0];
     if (!file) return;
 
-    const strategy = document.getElementById("optionsDropdown").value;
+    const dropdown = document.getElementById("optionsDropdown");
+    const strategy = dropdown.value; // Use value instead of text
     if (!strategy) {
       alert("Please select an investment strategy!");
       return;
@@ -18,7 +19,7 @@ document
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("investment_strategy", strategy);
+    formData.append("investment_strategy", strategy); // Append the selected strategy value
 
     // Show the loading spinner
     document.getElementById("loading-spinner").style.display = "block";
@@ -39,15 +40,19 @@ document
       const data = await response.json();
       console.log("Upload successful:", data);
 
-      // Store the LLM data in localStorage
+      // Store the LLM data and investment strategy in localStorage
       if (data.llm_data) {
         localStorage.setItem("llmData", JSON.stringify(data.llm_data));
+      }
+      if (data.investment_strategy) {
+        // Added storing investment_strategy
+        localStorage.setItem("investment_strategy", data.investment_strategy);
       }
 
       // Display upload success message
       document.getElementById("uploaded-file").innerHTML = `
         <a href="#" onclick="downloadFile()">File Uploaded Successfully</a>
-        <button class="delete-button" onclick="deleteFile()">Delete</button>
+        <button class="delete-button" onclick="deleteFile()">X</button>
       `;
 
       // Enable the "Get Analysis" button
@@ -70,3 +75,10 @@ document
   });
 
 // Optional: Implement downloadFile and deleteFile functions as needed
+document
+  .getElementById("optionsDropdown")
+  .addEventListener("change", function () {
+    const selectedValue = this.value;
+
+    console.log("Selected value:", selectedValue);
+  });
