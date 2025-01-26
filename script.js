@@ -20,6 +20,9 @@ document
     formData.append("file", file);
     formData.append("investment_strategy", strategy);
 
+    // Show the loading spinner
+    document.getElementById("loading-spinner").style.display = "block";
+
     try {
       const response = await fetch(
         "http://127.0.0.1:8000/upload-bank-statement",
@@ -59,6 +62,9 @@ document
     } catch (error) {
       console.error("Error uploading file:", error);
       alert("There was an error uploading your file. Please try again.");
+    } finally {
+      // Hide the loading spinner
+      document.getElementById("loading-spinner").style.display = "none";
     }
   });
 
