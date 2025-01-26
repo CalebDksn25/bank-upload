@@ -39,6 +39,11 @@ document
       const data = await response.json();
       console.log("Upload successful:", data);
 
+      // Store the LLM data in localStorage
+      if (data.llm_data) {
+        localStorage.setItem("llmData", JSON.stringify(data.llm_data));
+      }
+
       // Display upload success message
       document.getElementById("uploaded-file").innerHTML = `
         <a href="#" onclick="downloadFile()">File Uploaded Successfully</a>
@@ -47,18 +52,6 @@ document
 
       // Enable the "Get Analysis" button
       document.getElementById("next-page-button").disabled = false;
-
-      // Display the LLM response
-      if (data.llm_data) {
-        document.getElementById("llm-result").textContent = JSON.stringify(
-          data.llm_data,
-          null,
-          2
-        );
-      } else {
-        document.getElementById("llm-result").textContent =
-          "No LLM data received.";
-      }
     } catch (error) {
       console.error("Error uploading file:", error);
       alert("There was an error uploading your file. Please try again.");
@@ -66,6 +59,14 @@ document
       // Hide the loading spinner
       document.getElementById("loading-spinner").style.display = "none";
     }
+  });
+
+// Handle the "Get Analysis" button click to navigate to result.html
+document
+  .getElementById("next-page-button")
+  .addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent form submission
+    window.location.href = "result.html";
   });
 
 // Optional: Implement downloadFile and deleteFile functions as needed

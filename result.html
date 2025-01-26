@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Analysis Results - Financial Health Advisor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="background-section">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <img src="images/logo.PNG" alt="Financial Health Advisor Logo" />
+      </div>
+      <span class="navbar-title">Financial Health Advisor</span>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+      <h1>Analysis Results</h1>
+
+      <!-- Loading Spinner -->
+      <div id="loading-spinner" class="spinner" style="display: none"></div>
+
+      <!-- Results Section -->
+      <div id="results-section">
+        <!-- The analysis results will be displayed here -->
+      </div>
+    </main>
+
+    <!-- Link to external script -->
+    <script>
+      // filepath: /Users/calebdickson/Desktop/newnew/bank-upload/result.html
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const resultsSection = document.getElementById("results-section");
+        const loadingSpinner = document.getElementById("loading-spinner");
+
+        // Show the loading spinner
+        loadingSpinner.style.display = "block";
+
+        // Retrieve the LLM data from localStorage
+        const llmData = localStorage.getItem("llmData");
+
+        if (llmData) {
+          const data = JSON.parse(llmData);
+
+          // Display the results
+          resultsSection.innerHTML = `
+            <h2>User ID: ${data.user_id}</h2>
+            <p><strong>Monthly Savings:</strong> $${data.monthly_savings}</p>
+            <p><strong>Wealth Health Score:</strong> ${data.wealth_health}/100</p>
+            <p><strong>Investment Advice:</strong> ${data.investment_advice}</p>
+          `;
+
+          // Optionally, clear the stored data
+          // localStorage.removeItem("llmData");
+        } else {
+          resultsSection.innerHTML =
+            "<p>No analysis data available. Please upload a bank statement first.</p>";
+        }
+
+        // Hide the loading spinner
+        loadingSpinner.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
