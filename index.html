@@ -1,57 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Bank Statement Upload</title>
+    <title>Financial Health Advisor</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <h1>Upload Bank Statement</h1>
-    <input type="file" id="fileInput" />
-    <select id="strategySelect">
-      <option value="Aggressive Investing" selected>
-        Aggressive Investing
-      </option>
-      <option value="Conservative Investing">Conservative Investing</option>
-      <option value="Moderate Investing">Moderate Investing</option>
-    </select>
-    <button onclick="uploadFile()">Upload & Analyze</button>
-    <pre id="result"></pre>
+  <body class="background-section">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <img src="images/logo.PNG" alt="Financial Health Advisor Logo" />
+      </div>
+      <span class="navbar-title">Financial Health Advisor</span>
+    </nav>
 
-    <script>
-      async function uploadFile() {
-        console.log("Upload initiated");
-        const file = document.getElementById("fileInput").files[0];
-        const strategy = document.getElementById("strategySelect").value;
-        if (!file) {
-          alert("Please select a file!");
-          return;
-        }
+    <!-- Main Content -->
+    <main class="container">
+      <h1>Financial Health Advisor</h1>
+      <div class="dropdown-container">
+        <label for="optionsDropdown">Select Your Investment Strategy:</label>
+        <select id="optionsDropdown">
+          <option value="" disabled selected>Click to Open</option>
+          <option value="aggressive_investing">Aggressive Investing</option>
+          <option value="conservative_investing">Conservative Investing</option>
+          <option value="retirement_planning">Retirement Planning</option>
+          <option value="tax_strategy">Tax Strategy</option>
+          <option value="estate_planning">Estate Planning</option>
+        </select>
+      </div>
+      <div class="button-container">
+        <!-- Upload Button -->
+        <button id="upload-button" class="upload-button">
+          Upload Bank Statement
+        </button>
 
-        const formData = new FormData();
-        formData.append("file", file);
+        <!-- Hidden File Input -->
+        <input type="file" id="file-input" style="display: none" />
 
-        const url = `http://127.0.0.1:8000/upload-bank-statement?investment_strategy=${encodeURIComponent(
-          strategy
-        )}`;
+        <form id="form" class="form" action="results.html" method="post">
+          <!-- Uploaded File Section -->
+          <div id="uploaded-file" class="uploaded-file"></div>
+        </form>
 
-        try {
-          console.log("Sending POST request to", url);
-          const response = await fetch(url, {
-            method: "POST",
-            body: formData,
-          });
-          const data = await response.json();
-          console.log("Response received", data);
-          document.getElementById("result").textContent = JSON.stringify(
-            data,
-            null,
-            2
-          );
-        } catch (err) {
-          console.error("Fetch error:", err);
-          document.getElementById("result").textContent = "Error: " + err;
-        }
-      }
-    </script>
+        <!-- Next Page Button -->
+        <button
+          type="submit"
+          id="next-page-button"
+          class="next-page-button"
+          disabled>
+          Get Analysis
+        </button>
+      </div>
+
+      <!-- New Section to Display LLM Response -->
+      <pre id="llm-result" style="margin-top: 20px; text-align: left"></pre>
+    </main>
+    <!-- Link to external script -->
+    <script src="script.js"></script>
   </body>
 </html>

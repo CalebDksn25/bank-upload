@@ -1,0 +1,212 @@
+/* Reset some basic elements for consistency */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("images/professional-background-0rvi0y9hjbs1yq1q.jpg"); /* Replace with your image path */
+  background-size: cover; /* Makes the image cover the entire viewport */
+  background-position: center; /* Centers the image in the viewport */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center; /* Center the container horizontally */
+  align-items: center; /* Center the container vertically */
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Navigation Bar */
+.navbar {
+  width: 100%;
+  background-color: #2c3e50; /* Dark blue bar */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: fixed; /* Fix the navbar at the top */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure navbar stays above other content */
+}
+
+.navbar-title {
+  margin-left: 15px; /* Space between logo and title */
+  font-size: 1.5rem;
+  color: white; /* White text */
+  font-weight: bold;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Adjust the logo size */
+.logo img {
+  height: 40px; /* Adjust the size as needed */
+}
+
+/* Main Container */
+.container {
+  background-color: #e0e0e0; /* Replace with your image path */
+  background-size: cover; /* Ensure the image covers the container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px;
+  text-align: center; /* Center-align text inside */
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Title Style */
+.container h1 {
+  margin-bottom: 10px; /* Adjust space below the title */
+}
+
+/* Dropdown Section */
+.dropdown-container {
+  display: flex;
+  flex-direction: column; /* Stack dropdown and label vertically */
+  align-items: center; /* Center the dropdown and label */
+  margin-bottom: 20px;
+}
+
+.dropdown-container label {
+  margin-bottom: 10px; /* Space below the label */
+  font-size: 1.1em; /* Label font size */
+  color: #2c3e50;
+}
+
+.dropdown-container select {
+  width: 250px;
+  padding: 12px 15px;
+  border-radius: 6px;
+  border: 1px solid #bdc3c7;
+  font-size: 16px;
+  appearance: none; /* Remove default arrow */
+  background-color: #ecf0f1;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="7"><path fill="%23495a6e" d="M0 0l5 7 5-7z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 7px;
+  cursor: pointer;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.dropdown-container select:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center; /* Center buttons horizontally */
+  gap: 15px; /* Space between buttons */
+  margin-top: 20px; /* Space above the buttons */
+}
+
+/* Buttons */
+button {
+  margin-top: 20px;
+  border: none;
+  display: flex;
+  padding: 0.75rem 1.5rem;
+  background-color: #488aec; /* Default blue color */
+  color: #ffffff;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 1.5rem; /* Rounded corners */
+  user-select: none;
+  gap: 0.75rem;
+  transition: all 0.6s ease; /* Smooth transition */
+}
+
+button:hover(:disabled) {
+  box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+}
+
+button:focus,
+button:active {
+  opacity: 0.85;
+  box-shadow: none;
+}
+
+button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Specific Button Styles */
+.upload-button:hover {
+  background-color: #2874a6; /* Darker blue on hover */
+}
+
+.next-page-button {
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.next-page-button:disabled {
+  background-color: #a5d6a7; /* Fainter green for disabled state */
+  color: #e0e0e0; /* Light gray text */
+  cursor: not-allowed; /* Show "not-allowed" cursor */
+}
+.next-page-button:hover:not(:disabled) {
+  background-color: #1e8449; /* Darker green */
+}
+
+/* Uploaded File Display */
+.uploaded-file {
+  display: inline-flex; /* Ensures content inside stays inline */
+  align-items: center; /* Vertically aligns text and button */
+  justify-content: center; /* Centers the entire output */
+  gap: 8px; /* Space between the link and the delete button */
+  font-size: 1rem; /* Consistent font size */
+  color: #2c3e50; /* Dark text color for readability */
+  margin-top: 10px;
+}
+
+.uploaded-file a {
+  color: #3498db; /* Blue color for file link */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Make the link bold */
+}
+
+.uploaded-file a:hover {
+  text-decoration: underline; /* Add underline on hover */
+  color: #2874a6; /* Darker blue on hover */
+}
+
+/* Delete Button */
+.delete-button {
+  background: none; /* Transparent background */
+  border: none; /* Remove border */
+  color: red; /* Red color for delete button */
+  font-size: 1rem; /* Match the text size */
+  font-weight: bold; /* Bold text */
+  cursor: pointer; /* Pointer cursor on hover */
+  padding: 0; /* Remove padding for compact size */
+  line-height: 1; /* Match line height */
+}
+
+.delete-button:hover {
+  color: darkred; /* Darker red on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* New Styles for Background Section */
+.background-section {
+  /* Add any additional styles if necessary */
+}
