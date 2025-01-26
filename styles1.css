@@ -1,0 +1,169 @@
+body {
+    font-family: Arial, sans-serif;
+    background-size: cover; /* Makes the image cover the entire viewport */
+    background-position: center; /* Centers the image in the viewport */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center; /* Center the container horizontally */
+    align-items: center; /* Center the container vertically */
+    min-height: 100vh; /* Full viewport height */
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers vertically */
+    align-items: center; /* Centers horizontally */
+    padding: 40px;
+    text-align: center; /* Optional: centers text within the container */
+}
+.footer-image {
+    position: absolute; /* Make the image position relative to the viewport or parent container */
+    bottom: 20px; /* Adjust the space from the bottom of the screen */
+    left: 50%; /* Center the image horizontally */
+    transform: translateX(-50%); /* Adjust the image's position to center it perfectly */
+    width: 100px; /* Set the desired width of the image */
+}
+
+.data-display {
+    margin-top: 20px;
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    min-height: 50px;
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 17px 40px;
+    border-radius: 50px;
+    border: 0;
+    background-color: rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+}
+
+button:hover {
+    letter-spacing: 3px;
+    background-color: rgb(00 32 91);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(00 32 91) 0px 7px 29px 0px;
+}
+
+button:active {
+    letter-spacing: 3px;
+    background-color: rgb(00 32 91);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(00 32 91) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: #f1f1f1;
+    padding: 40px;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('file:///Users/braydonjohnston/Desktop/Heartbeat.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.sidebar h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.sidebar p {
+    font-size: 18px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.opaque-box {
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black background */
+    padding: 20px 30px;
+    border-radius: 8px; /* Rounded corners for a smooth look */
+    text-align: center; /* Center the text inside the box */
+    max-width: 80%; /* Restrict the box width */
+    color: white; /* Text color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+}
+
+.opaque-box h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.opaque-box p {
+    font-size: 18px;
+}
+/* Slice Colors for the Gauge */
+.slice-colors .st {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 200px;
+    clip-path: polygon(50% 50%, 100% 0, 100% 100%);
+}
+
+/* Green slice */
+.slice-colors .st:nth-child(1) {
+    background-color: #1eaa59; /* Green */
+    transform-origin: bottom right;
+    transform: rotate(-33deg);
+}
+
+/* Yellow slice */
+.slice-colors .st:nth-child(2) {
+    background-color: #f1c40f; /* Yellow */
+    transform-origin: center bottom;
+    transform: rotate(0deg);
+}
+
+/* Red slice */
+.slice-colors .st:nth-child(3) {
+    background-color: #e84c3d; /* Red */
+    transform-origin: bottom left;
+    transform: rotate(33deg);
+}
+
